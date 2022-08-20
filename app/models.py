@@ -12,7 +12,7 @@ from app.arcface import ArcMarginProduct
 class BertModel(nn.Module):
     def __init__(self,
                  bert_model,
-                 num_classes=472,
+                 num_classes=471,
                  last_hidden_size=768):
 
         super().__init__()

@@ -2,16 +2,15 @@ from utils.client import model2client
 
 
 def preprocess_json(json_file: dict) -> dict:
-    input_data = json_file['text']
 
-    if isinstance(input_data, dict):
-        input_data = [input_data]
+    if isinstance(json_file, dict):
+        json_file = [json_file]
 
     text_data = []
     products_ids = []
 
     dict2recognition = {}
-    for data in input_data:
+    for data in json_file:
         text_data.append(data['name'] + " " +
                          " ".join(data['props']).replace("\t", " "))
         products_ids.append(data['id'])

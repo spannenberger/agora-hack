@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 import torch
 
-from app.business_logic import BERTHandler, GPTHandler
-from app.models import BERTHackModel, GPTHackModel
+from app.business_logic import BERTHandler
+from app.models import BERTHackModel
 
 torch.manual_seed(0)
 random.seed(0)
