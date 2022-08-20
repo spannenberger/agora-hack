@@ -5,7 +5,6 @@ from torch import nn
 
 from transformers import GPT2ForSequenceClassification, GPT2Tokenizer, DistilBertTokenizer, DistilBertModel
 from transformers.tokenization_utils_base import BatchEncoding
-import pandas as pd
 
 from app.arcface import ArcMarginProduct
 
