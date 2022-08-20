@@ -1,9 +1,10 @@
+import json
+
 from flask import request
+from utils.processing_json import postprocess_json, preprocess_json
 
 from app import app
 from app.init import init_model
-from utils.processing_json import preprocess_json, postprocess_json
-import json
 
 handler = init_model()
 

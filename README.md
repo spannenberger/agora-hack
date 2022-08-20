@@ -16,7 +16,9 @@
 - [requirements.txt](requirements.txt) - файл со всеми необходимыми библиотеками для работы сервиса
 - [install_models.sh](install_models.sh) - скрипт для выгрузки моделей с облака
 - [start_service.sh](start_service.sh) - bash скрипт с выгрузкой моделей с диска и запуском сервиса сопоставления (запускается внутри `docker-compose.yml`)
-- [product_matches_path.json](product_matches_path.json) - json с сопоставленными классами к `reference_id`
+- [product_matches_path.json](models/source/product_matches_path.json) - json с сопоставленными классами к `reference_id`
+- [test_json.json](test_json.json) - тестовые данные для отправки в сервис (для примера) 
+- [recognition_result.json](recognition_result.json) - ответ сервиса на тестовые данные (для примера)
 ### Docker run
 Для того чтобы поднять сервис на локальной/удаленной машине нужно:
 - убедиться, что указанные порты в ```docker-compose.yml``` доступны на вашей машине
