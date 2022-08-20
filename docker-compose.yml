@@ -1,0 +1,56 @@
+version: '2.3'
+
+services:
+  # db:
+  #   image: mysql
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   restart: always
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=example
+
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports: 
+  #     - 8080:8080
+
+  app:
+    image: app
+    env_file: .env
+    # runtime: nvidia
+    pid: "bridge"
+    ports:
+      - 5017:5000
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/workspace
+    build:
+      context: .
+      network: host
+      dockerfile: ./Dockerfile
+    command: gunicorn --log-level debug --timeout 88888888 --bind 0.0.0.0:5000 backend:app
+
+  dash_app:
+    image: dash_app
+    env_file: .env
+    ports:
+      - 8050:8501
+    stdin_open: true
+    depends_on:
+      - app
+    tty: true
+    volumes:
+      - .:/workspace
+    build:
+      context: .
+      network: host
+      dockerfile: ./Dockerfile
+    command: streamlit run streamlit_app/app.py
+
+
+volumes:
+  app:
+  dash_app:
