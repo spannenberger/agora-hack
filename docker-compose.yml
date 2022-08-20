@@ -7,7 +7,7 @@ services:
     # runtime: nvidia
     pid: "bridge"
     ports:
-      - 5017:5000
+      - 8100:8100
     stdin_open: true
     tty: true
     volumes:
@@ -16,7 +16,7 @@ services:
       context: .
       network: host
       dockerfile: ./Dockerfile
-    command: sh start_service.sh 
+    # command: gunicorn --log-level debug --timeout 88888888 --bind 0.0.0.0:8100 backend:app
 
 volumes:
   app:

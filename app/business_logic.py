@@ -8,6 +8,7 @@ from torch import nn
 import pandas as pd
 from app.models import GPTHackModel
 import numpy as np
+from tqdm import tqdm
 
 
 class Handler(ABC):
@@ -146,8 +147,11 @@ class BERTHandler(Handler):
             products_matching: Dict - responce dict with matched reference_id & naming
         """
 
-        dists = np.sum((np.square(model_outputs - self.base_file.values.T)), axis=1)
-        indices = np.argsort(dists)
-        predict_category = self.base_file.columns[indices[0]]
-
-        return predict_category
+        predicts = []
+        for pred in tqdm(model_outputs):
+            dists = np.sum((np.square(pred - self.base_file.values.T)), axis=1)
+            indices = np.argsort(dists)
+            predict_category = self.base_file.columns[indices[0]]
+            predicts.append(predict_category)
+            
+        return predicts
