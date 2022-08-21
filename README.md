@@ -19,14 +19,14 @@
 - [product_matches_path.json](models/source/product_matches_path.json) - json с сопоставленными классами к `reference_id`
 - [test_json.json](test_json.json) - тестовые данные для отправки в сервис (для примера) 
 - [recognition_result.json](recognition_result.json) - ответ сервиса на тестовые данные (для примера)
+- [test_request.py](tools/test_request.py) - скрипт с отправкой тестового запроса в сервис сопоставлений
 ### Docker run
 Для того чтобы поднять сервис на локальной/удаленной машине нужно:
 - убедиться, что указанные порты в ```docker-compose.yml``` доступны на вашей машине
 - У вас должен быть `.env`:
 ```
-MODEL_PATH=./models/arcface_bert/model.pt
-BASE_FILE=./models/source/base_file.csv
-PRODUCTS_MATCHES_PATH=./models/source/product_matches_path.json
+MODEL_PATH=./models/bert_arcface/model.pt  # path to model 
+BASE_FILE=./models/bert_arcface/base_file.csv  # path to base file with mean embeddings for each class
 ```
 - запустить скрипт сборки docker контейнеров:
 ```
@@ -37,3 +37,4 @@ docker-compose build
 docker-compose up -d
 ```
 - Поздравляем, сервис поднят
+- Теперь можно запустить `python tools/test_request.py` с отправкой тестового запроса

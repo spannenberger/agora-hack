@@ -1,3 +1,4 @@
-mkdir ./models
-gdown --id 1R3eM9DNvnhUZtU4FkSA_cMajN7ap6Y4g -O ./models
-unzip models.zip
+gdown --id 1JtEsT9aDxagC75oopwNsd_h6x-XJOnu_ -O ./models/model.zip
+unzip models/model.zip -d models/bert_arcface
+
+rm models/model.zip

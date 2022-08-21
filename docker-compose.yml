@@ -16,7 +16,7 @@ services:
       context: .
       network: host
       dockerfile: ./Dockerfile
-    # command: gunicorn --log-level debug --timeout 88888888 --bind 0.0.0.0:8100 backend:app
+    command: sh start_service.sh
 
 volumes:
   app:
