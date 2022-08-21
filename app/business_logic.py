@@ -44,7 +44,7 @@ class BERTHandler(Handler):
         """ Get model & our products
 
         Args:
-            model: GPTHackModel - our model class instance
+            model: BERTHackModel - our model class instance
             base_file: pd.DataFrame - dataframe with ethalon products embeddings
             products_list: Dict - json file with reference_id matched with namings
         """
